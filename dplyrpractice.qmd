@@ -82,3 +82,14 @@ white_wine$quality <- white_wine$quality |> factor(
   levels = 3:9
 ) ## 3:9 means 3, 4, 5, ..., 9
 ```
+
+```{r}
+white_wine <- white_wine |>
+  mutate(quality = factor(quality, ordered = TRUE, levels = 3:9))
+```
+
+```{r}
+ggplot(white_wine, aes(x = quality, fill = quality)) +
+  geom_bar()
+```
+
