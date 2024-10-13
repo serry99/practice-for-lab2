@@ -1,6 +1,17 @@
 ---
 title: "dplyrpractice"
 author: "Serry"
-format: html
+format:
+  html:
+    code-fold: true
 ---
+
+```{r}
+#| message: false
+here::i_am("practice for lab2.Rproj")
+library(here)
+library(vroom)
+library(ggplot2)
+theme_set(theme_bw())
+```
 
