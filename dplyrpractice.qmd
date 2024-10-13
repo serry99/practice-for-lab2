@@ -38,3 +38,19 @@ ggplot(white_wine, aes(x = quality)) +
 library(dplyr)
 ```
 
+### Column extraction 
+```{r}
+class(white_wine)
+## class + column extraction
+class(white_wine$quality)
+## column extraction and then class
+white_wine$quality |> class()
+white_wine[["quality"]] |> class()
+white_wine$`fixed acidity` |> class()
+white_wine[["fixed acidity"]] |> class()
+## dplyr style
+white_wine |>
+  pull(quality) |>
+  class()
+class(pull(white_wine, quality))
+```
