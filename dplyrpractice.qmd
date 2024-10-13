@@ -31,3 +31,10 @@ white_wine <- vroom(here("data", "winequality-white.csv"))
 ggplot(white_wine, aes(x = quality)) +
   geom_bar()
 ```
+
+## Data transformation
+```{r}
+#| message: false
+library(dplyr)
+```
+
