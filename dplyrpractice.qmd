@@ -153,3 +153,22 @@ white_wine |>
   select(where(\(x) is.numeric(x) & (max(x) < 5)))
 ```
 
+### Selecting rows
+
+Simple selection is based on indices with `slice()`. 
+
+```{r}
+white_wine |> 
+  slice(1:5, 150:155) |>
+  select(alcohol, quality) |>
+  knitr::kable()
+```
+
+Condition based selection uses `filter()`.
+
+```{r}
+white_wine |> 
+  filter(alcohol > 14) |>
+  select(alcohol, quality, `citric acid`, `residual sugar`) |>
+  knitr::kable()
+```
