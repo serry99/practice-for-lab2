@@ -278,6 +278,151 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
+<section id="sub-setting" class="level2">
+<h2 class="anchored" data-anchor-id="sub-setting">Sub-setting</h2>
+<section id="selecting-columns" class="level3">
+<h3 class="anchored" data-anchor-id="selecting-columns">Selecting columns</h3>
+<p>Column sub-setting is done with the <code>select()</code> function.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>white_wine <span class="sc">|&gt;</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">fixed acidity</span><span class="st">`</span>, <span class="st">`</span><span class="at">volatile acidity</span><span class="st">`</span>, <span class="st">`</span><span class="at">citric acid</span><span class="st">`</span>, pH)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4,898 × 4
+   `fixed acidity` `volatile acidity` `citric acid`    pH
+             &lt;dbl&gt;              &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;
+ 1             7                 0.27          0.36  3   
+ 2             6.3               0.3           0.34  3.3 
+ 3             8.1               0.28          0.4   3.26
+ 4             7.2               0.23          0.32  3.19
+ 5             7.2               0.23          0.32  3.19
+ 6             8.1               0.28          0.4   3.26
+ 7             6.2               0.32          0.16  3.18
+ 8             7                 0.27          0.36  3   
+ 9             6.3               0.3           0.34  3.3 
+10             8.1               0.22          0.43  3.22
+# ℹ 4,888 more rows</code></pre>
+</div>
+</div>
+<p>Side note: we can display nicely data frames with the <code>knitr::kable()</code> function but the original data frame is too big, so we select the first 10 rows with <code>slice()</code>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>white_wine <span class="sc">|&gt;</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">fixed acidity</span><span class="st">`</span>, <span class="st">`</span><span class="at">volatile acidity</span><span class="st">`</span>, <span class="st">`</span><span class="at">citric acid</span><span class="st">`</span>, pH) <span class="sc">|&gt;</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">|&gt;</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">fixed acidity</th>
+<th style="text-align: right;">volatile acidity</th>
+<th style="text-align: right;">citric acid</th>
+<th style="text-align: right;">pH</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">7.0</td>
+<td style="text-align: right;">0.27</td>
+<td style="text-align: right;">0.36</td>
+<td style="text-align: right;">3.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6.3</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">0.34</td>
+<td style="text-align: right;">3.30</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8.1</td>
+<td style="text-align: right;">0.28</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: right;">3.26</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7.2</td>
+<td style="text-align: right;">0.23</td>
+<td style="text-align: right;">0.32</td>
+<td style="text-align: right;">3.19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7.2</td>
+<td style="text-align: right;">0.23</td>
+<td style="text-align: right;">0.32</td>
+<td style="text-align: right;">3.19</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8.1</td>
+<td style="text-align: right;">0.28</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: right;">3.26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6.2</td>
+<td style="text-align: right;">0.32</td>
+<td style="text-align: right;">0.16</td>
+<td style="text-align: right;">3.18</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7.0</td>
+<td style="text-align: right;">0.27</td>
+<td style="text-align: right;">0.36</td>
+<td style="text-align: right;">3.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6.3</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">0.34</td>
+<td style="text-align: right;">3.30</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8.1</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: right;">0.43</td>
+<td style="text-align: right;">3.22</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Positional selection based on the indices of the columns.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>white_wine <span class="sc">|&gt;</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Columns can also be selected based on conditions on their names or on their nature.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>white_wine <span class="sc">|&gt;</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"acid"</span>) <span class="sc">|</span> pH)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Selection based on the content.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>white_wine <span class="sc">|&gt;</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.factor))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>white_wine <span class="sc">|&gt;</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(\(x) <span class="fu">is.numeric</span>(x) <span class="sc">&amp;</span> (<span class="fu">max</span>(x) <span class="sc">&lt;</span> <span class="dv">5</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
 
 </main>
 <!-- /main column -->
